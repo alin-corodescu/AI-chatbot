@@ -1,0 +1,109 @@
+<aiml version="1.0.1" encoding="UTF-8">
+
+<topic name="INTRO">
+    <category>
+        <pattern>HELLO</pattern>
+        <template>
+            <random>
+                <li>Hello there! What's your name?</li>
+                <li>Hello there! Can you please tell me your name?</li>
+            </random>
+        </template>
+    </category>
+
+    <category>
+        <pattern>MY NAME IS *</pattern>
+        <template>
+            Hi <star/>.
+            <think><set name="nume"><star/></set></think>
+        </template>
+    </category>
+
+        <!--<category>-->
+        <!--<pattern>*</pattern>-->
+        <!--<template>-->
+            <!--Setez numele-->
+            <!--<think><set name="nume"><star/></set></think>-->
+        <!--</template>-->
+    <!--</category>-->
+</topic>
+
+    <topic name="ASKAGE">
+        <category>
+        <pattern>SECRET TRIGGER</pattern>
+            <template>
+                <random>
+                    <li>How old are you?</li>
+                    <li>What's your age?</li>
+                </random>
+            </template>
+        </category>
+        <category>
+            <pattern>I AM * YEARS OLD</pattern>
+            <template>
+                <think>
+                    <set name="age"><star/></set>
+                </think>
+            </template>
+        </category>
+        <category>
+            <pattern>MY AGE IS * </pattern>
+            <template>
+                <srai>I AM <star></star> YEARS OLD</srai>
+            </template>
+        </category>
+
+        <!-- NAME IS SET, NEED TO VERIFY IF AGE AND -->
+    </topic>
+
+    <topic name="CONFIRM">
+        <category>
+            <pattern>SECRET TRIGGER</pattern>
+            <template>
+                So you are <get name="age"/> years old and work as <get name="job"/>, right?
+            </template>
+        </category>
+        <category>
+            <pattern>YES</pattern>
+            <template>
+                <think><set name="conf">TRUE</set></think>
+            </template>
+        </category>
+
+        <category>
+            <pattern>NO</pattern>
+            <template>
+                <think><set name="conf">FALSE</set></think>
+            </template>
+        </category>
+    </topic>
+
+
+        <topic name="ASKJOB">
+        <category>
+        <pattern>SECRET TRIGGER</pattern>
+            <template>
+                <random>
+                    <li>What is your job?</li>
+                    <li>What's your proffession?</li>
+                    <li>What do you work as?</li>
+                </random>
+            </template>
+        </category>
+        <category>
+            <pattern>I AM A *</pattern>
+            <template>
+                <think>
+                    <set name="job"><star/></set>
+                </think>
+            </template>
+        </category>
+            <category>
+            <pattern>MY JOB IS * </pattern>
+            <template>
+                <srai>I AM A<star></star></srai>
+            </template>
+        </category>
+        <!-- NAME IS SET, NEED TO VERIFY IF AGE AND -->
+    </topic>
+</aiml>

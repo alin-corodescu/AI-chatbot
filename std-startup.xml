@@ -12,8 +12,10 @@
         <!-- This learn an aiml file -->
         <template>
             <learn>basic_chat.xml</learn>
+            <learn>identification.xml</learn>
             <!-- You can add more aiml files here -->
             <!--<learn>more_aiml.aiml</learn>-->
+            <think><set name="topic">INTRO</set></think>
         </template>
 
     </category>
