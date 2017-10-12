@@ -1,12 +1,33 @@
 import aiml
+import os
 
 sessionId = 123
 kernel = aiml.Kernel()
 kernel.learn("std-startup.xml")
 kernel.respond("load aiml b",sessionId)
 kernel.verbose(True)
+
+
 # TODO : populate this list with dictionaries (nume,age,job)
-persons = []
+def load_persons():
+    _persons = []
+    if os.path.isfile("persons"):
+        f = open("persons", "r")
+        for line in f.readlines():
+            _persons.append(eval(line))
+
+    return _persons
+
+def write_persons():
+    f = open("persons", "w")
+    for person in persons:
+        f.write(str(person))
+        f.write(os.linesep)
+
+
+persons = load_persons()
+
+
 
 
 def can_identify(nume, age, occupation):
@@ -47,7 +68,9 @@ def find_occupation():
 # TODO implement storing method
 # If there is no entry with this person
 def add_person(nume, age, occupation):
-    pass
+    new_person = { "nume" : nume, "age" : age, "job" : occupation}
+    persons.append(new_person)
+    write_persons()
 
 
 # Get confirmation that all the entries are correct
@@ -86,7 +109,7 @@ def get_matched_age(nume):
 def get_matched_occupation(nume, age):
     for person in persons:
         if person["nume"] == nume and person["age"] == age:
-            return person["occupation"]
+            return person["job"]
 
 if age == None:
     age = get_matched_age(nume)
@@ -94,10 +117,13 @@ if age == None:
 if occupation == None:
     occupation = get_matched_occupation(nume,age)
 
+kernel.setPredicate("age",age,sessionId)
+kernel.setPredicate("job",occupation, sessionId)
+
 if not confirm():
     age = find_age()
     occupation = find_occupation()
-# New person around
-if not can_identify(nume, age, occupation):
+    add_person(nume,age,occupation)
+elif not can_identify(nume, age, occupation):
     add_person(nume,age,occupation)
 
