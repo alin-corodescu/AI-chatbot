@@ -1,20 +1,186 @@
 <aiml version="1.1" encoding="UTF-8">
+
     <category>
-        <pattern>HELLO</pattern>
+        <pattern>CHANGE TOPIC</pattern>
         <template>
-            Hello to you too
+
             <think>
-                <set name="topic">salut</set>
+                <set name = "user-name">Cristi</set>
+                <set name = "user-age">21</set>
             </think>
+            Tell me something <get name="user-name"/>, do you like chatting with me?
+
+            <think>
+                <set name = "topic">NAME TOPIC</set>
+            </think>
+
         </template>
     </category>
 
+    <topic name="NAME TOPIC">
 
-    <topic name="SALUT">
         <category>
-            <pattern>IM STUPID</pattern>
-            <template>I'm a bot, silly!<get name="topic"></get></template>
+            <pattern>YES *</pattern>
+            <that> TELL ME SOMETHING * </that>
+            <template>I am glad you enjoy our time chatting! But what about your family? Do you have any siblings to chat with?</template>
         </category>
+
+        <category>
+            <pattern>YES </pattern>
+            <that> TELL ME SOMETHING * </that>
+            <template>I am glad you enjoy our time chatting! But what about your family? Do you have any siblings to chat with?</template>
+        </category>
+
+            <category>
+                <pattern>YES *</pattern>
+                <that> I AM GLAD YOU ENJOY *</that>
+                <template>
+                    God bless them. Do you feel old around them?
+                    <think>
+                        <set name = "topic">AGE TOPIC</set>
+                    </think>
+                 </template>
+            </category>
+
+            <category>
+                <pattern>YES</pattern>
+                <that> I AM GLAD YOU ENJOY *</that>
+                <template>
+                    God bless them. Do you feel old around them?
+                    <think>
+                        <set name = "topic">AGE TOPIC</set>
+                    </think>
+                 </template>
+            </category>
+
+            <category>
+                <pattern>NO *</pattern>
+                <that> I AM GLAD YOU ENJOY *</that>
+                <template>
+                    Your parents had enough with you, right? Kidding! Do I make you feel old with these jokes?
+                    <think>
+                        <set name = "topic">AGE TOPIC</set>
+                    </think>
+                 </template>
+            </category>
+
+             <category>
+                <pattern>NO </pattern>
+                <that> I AM GLAD YOU ENJOY *</that>
+                <template>
+                    Your parents had enough with you, right? Kidding! Do I make you feel old with these jokes?
+                    <think>
+                        <set name = "topic">AGE TOPIC</set>
+                    </think>
+                 </template>
+            </category>
+
+        <category>
+            <pattern>NO</pattern>
+            <that>TELL ME SOMETHING *</that>
+            <template>Yeah, same here... But still, you do have family members to chat with, right?</template>
+        </category>
+
+        <category>
+            <pattern>NO *</pattern>
+            <that>TELL ME SOMETHING *</that>
+            <template>Yeah, same here... But still, you do have family members to chat with, right?</template>
+        </category>
+
+            <category>
+                <pattern>YES </pattern>
+                <that> * FAMILY MEMBERS * </that>
+                <template> Hmm, nice. Old people in particular don't really talk much. In that case...do you feel old?
+                    <think>
+                        <set name = "topic">AGE TOPIC</set>
+                    </think>
+                </template>
+            </category>
+
+            <category>
+                <pattern>YES *</pattern>
+                <that> * FAMILY MEMBERS * </that>
+                <template> Hmm, nice. Old people in particular don't really talk much. In that case...do you feel old?
+                    <think>
+                        <set name = "topic">AGE TOPIC</set>
+                    </think>
+                </template>
+            </category>
+
+            <category>
+                <pattern>NO</pattern>
+                <that> * FAMILY MEMBERS * </that>
+                <template> Hmm, nice. Old people in particular don't really talk much. Do you feel old?
+                    <think>
+                        <set name = "topic">AGE TOPIC</set>
+                    </think>
+                </template>
+            </category>
+
+            <category>
+                <pattern>NO *</pattern>
+                <that> * FAMILY MEMBERS * </that>
+                <template> Hmm, sorry about that. Old people tend to talk less, and I don't feel old enough to do that. Do you?
+                    <think>
+                        <set name = "topic">AGE TOPIC</set>
+                    </think>
+                </template>
+            </category>
+
+    </topic>
+
+    <topic name="AGE TOPIC">
+
+         <category>
+            <pattern>YES</pattern>
+             <that> * FEEL OLD * </that>
+            <template>You have still a long way to go, so don't worry. People your age should socialize more don't you think?</template>
+        </category>
+
+        <category>
+            <pattern>YES *</pattern>
+             <that> * FEEL OLD * </that>
+            <template>You have still a long way to go, so don't worry. People your age should socialize more don't you think?</template>
+        </category>
+
+            <category>
+                <pattern>YES </pattern>
+                <that>YOU HAVE STILL A LONG WAY TO GO *</that>
+                <template>I'm happy you think the same, but I'm curious, where do you work?
+                    <think><set name = "topic">JOB TOPIC</set></think>
+                </template>
+            </category>
+
+             <category>
+                <pattern>YES *</pattern>
+                <that>YOU HAVE STILL A LONG WAY TO GO *</that>
+                <template>I'm happy you think the same, but I'm curious, where do you work?
+                    <think><set name = "topic">JOB TOPIC</set></think>
+                </template>
+            </category>
+
+            <category>
+                <pattern>NO *</pattern>
+                <that>You've still got a long way to go, so don't worry. People your age should socialize more don't you think?</that>
+                <template>What a young spirit you are! Mind me asking, but where do you work?
+                    <think><set name = "topic">JOB TOPIC</set></think>
+                </template>
+            </category>
+
+        <category>
+            <pattern>NO *</pattern>
+            <that>So, you're *. Do you feel old?</that>
+            <template>Good to hear that, people your age complain too much.</template>
+        </category>
+
+    </topic>
+
+    <topic name="JOB TOPIC">
+
+      <category>
+         <pattern>WHAT ARE YOU</pattern>
+         <template>I'm a bot, silly!</template>
+      </category>
     </topic>
 
 </aiml>

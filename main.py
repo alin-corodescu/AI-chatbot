@@ -2,8 +2,8 @@ import aiml
 import fileinput
 
 
-
-dict = { "ana" : "mere", "dan" : "pere"}
-
-dict = eval(str(dict))
-print(dict)
+kernel = aiml.Kernel()
+kernel.learn("std-startup.xml")
+kernel.respond("LOAD AIML B")
+while True:
+    print(kernel.respond(input()))
