@@ -18,14 +18,14 @@
             <think><set name="nume"><star/></set></think>
         </template>
     </category>
+        <category>
+        <pattern>I AM *</pattern>
+        <template>
+            Hi <star/>.
+            <think><set name="nume"><star/></set></think>
+        </template>
+    </category>
 
-        <!--<category>-->
-        <!--<pattern>*</pattern>-->
-        <!--<template>-->
-            <!--Setez numele-->
-            <!--<think><set name="nume"><star/></set></think>-->
-        <!--</template>-->
-    <!--</category>-->
 </topic>
 
     <topic name="ASKAGE">

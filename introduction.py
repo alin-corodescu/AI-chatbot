@@ -22,7 +22,6 @@ def write_persons():
     f = open("persons", "w")
     for person in persons:
         f.write(str(person))
-        f.write(os.linesep)
 
 
 persons = load_persons()
@@ -53,7 +52,7 @@ def find_age():
     kernel.setPredicate("topic","ASKAGE",sessionId)
     print(kernel.respond("secret trigger",sessionId))
     while kernel.getPredicate("age",sessionId) == "":
-        print(kernel.respond(input("age>>"),sessionId))
+        print(kernel.respond(input(),sessionId))
     return kernel.getPredicate("age",sessionId)
 
 
@@ -62,7 +61,7 @@ def find_occupation():
     kernel.setPredicate("topic","ASKJOB",sessionId)
     print(kernel.respond("secret trigger",sessionId))
     while kernel.getPredicate("job",sessionId) == "":
-        print(kernel.respond(input("job>>"),sessionId))
+        print(kernel.respond(input(),sessionId))
     return kernel.getPredicate("job",sessionId)
 
 # TODO implement storing method
@@ -78,7 +77,7 @@ def confirm():
     kernel.setPredicate("topic","CONFIRM",sessionId)
     print(kernel.respond("secret trigger",sessionId))
     while kernel.getPredicate("conf",sessionId) == "":
-        print(kernel.respond(input("confirm>>"),sessionId))
+        print(kernel.respond(input(),sessionId))
     if kernel.getPredicate("conf",sessionId) == "TRUE":
         return True
     return False
@@ -86,7 +85,7 @@ def confirm():
 
 while len(kernel.getPredicate("nume",sessionId)) == 0:
     print(kernel.getPredicate("nume",sessionId))
-    print(kernel.respond(input("nume>>"),sessionId))
+    print(kernel.respond(input(),sessionId))
 
 nume = kernel.getPredicate("nume",sessionId)
 age = None
@@ -127,3 +126,6 @@ if not confirm():
 elif not can_identify(nume, age, occupation):
     add_person(nume,age,occupation)
 
+print(kernel.respond("CHANGE TOPIC", sessionId))
+while True:
+    print(kernel.respond(input(),sessionId))
